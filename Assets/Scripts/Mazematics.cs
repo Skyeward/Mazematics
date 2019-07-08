@@ -406,7 +406,7 @@ public class Mazematics : MonoBehaviour {
 			}
 		}
 	}
-	public string TwitchHelpMessage = "Use '!{0} press <button>' to press a button. Valid buttons are: up, down, left, right, screen. You can use u; d; l; r for the directions. You can also chain the buttons. For ex. '{0} press screen up down display'";
+	public string TwitchHelpMessage = "Use '!{0} press <button>' to press a button. Valid buttons are: up, down, left, right, screen. You can use u; d; l; r for the directions. (Please don't use capitals!) You can also chain the buttons. For ex. '{0} press screen up down display'";
     IEnumerator ProcessTwitchCommand(string command)
     {
 		string commfinal=command.Replace("press ", "");
