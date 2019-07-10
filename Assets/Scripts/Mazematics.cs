@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -403,6 +403,40 @@ public class Mazematics : MonoBehaviour {
 				quadRenderer.enabled = true;
 				screenTextRenderer.enabled = false;
 				quadRenderer.material = shapeList[lastDigitOfTimer];
+			}
+		}
+	}
+	public string TwitchHelpMessage = "Use '!{0} press <button>' to press a button. Valid buttons are: up, down, left, right, screen. You can use u; d; l; r for the directions. (Please don't use capitals!) You can also chain the buttons. For ex. '{0} press screen up down display'";
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+		string commfinal=command.Replace("press ", "");
+		string[] digitstring = commfinal.Split(' ');
+		int tried;
+		foreach(string option in digitstring){
+			if(option=="up"){
+				yield return null;
+				yield return arrowUp;
+				yield return arrowUp;
+			}
+			if(option=="down"){
+				yield return null;
+				yield return arrowDown;
+				yield return arrowDown;
+			}
+			if(option=="left"){
+				yield return null;
+				yield return arrowLeft;
+				yield return arrowLeft;
+			}
+			if(option=="right"){
+				yield return null;
+				yield return arrowRight;
+				ield return arrowRight;
+			}
+			if(option=="display" || option=="screen"){
+				yield return null;
+				yield return screen;
+				yield return screen;
 			}
 		}
 	}
