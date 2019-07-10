@@ -413,19 +413,29 @@ public class Mazematics : MonoBehaviour {
 		string[] digitstring = commfinal.Split(' ');
 		int tried;
 		foreach(string option in digitstring){
-			if(option=="up" || option=="u"){
+			if(option=="up"){
+				yield return null;
+				yield return arrowUp;
 				yield return arrowUp;
 			}
-			if(option=="down" || option=="d"){
+			if(option=="down"){
+				yield return null;
+				yield return arrowDown;
 				yield return arrowDown;
 			}
-			if(option=="left" || option=="l"){
+			if(option=="left"){
+				yield return null;
+				yield return arrowLeft;
 				yield return arrowLeft;
 			}
-			if(option=="right" || option=="r"){
+			if(option=="right"){
+				yield return null;
 				yield return arrowRight;
+				ield return arrowRight;
 			}
 			if(option=="display" || option=="screen"){
+				yield return null;
+				yield return screen;
 				yield return screen;
 			}
 		}
