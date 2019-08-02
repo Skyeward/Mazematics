@@ -408,11 +408,12 @@ public class Mazematics : MonoBehaviour {
 			}
 		}
 	}
-	public string TwitchHelpMessage = "Use '!{0} cycle' to cycle between homes. To submit a home use '!{0} <Home name>'. For ex. '!{0} Homestead'. Pay attention to the capitals in the name!";
+	public string TwitchHelpMessage = "Use '!{0} press <button>' to press a button. You can also chain buttons like '!{0} press up down screen'. Valid buttons are: up, down, left, right, display. Aliases: u, d, l, r, screen";
     IEnumerator ProcessTwitchCommand(string command)
     {
 		string commfinal=command.Replace("press ", "");
-		string[] digitstring = commfinal.Split(' ');
+	    	string commfinal2 = commfinal.Replace("Press ", "");
+		string[] digitstring = commfinal2.Split(' ');
 		int tried;
 		foreach(string option in digitstring){
 			if(option.Equals("up", StringComparison.InvariantCultureIgnoreCase) || option.Equals("u", StringComparison.InvariantCultureIgnoreCase)){
