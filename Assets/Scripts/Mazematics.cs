@@ -1,6 +1,8 @@
- using System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Mazematics : MonoBehaviour {
 
@@ -84,42 +86,42 @@ public class Mazematics : MonoBehaviour {
 			shapeList.Add(shapelessMat);
 		}
 
-		circlePlus = values[Random.Range(0, values.Count)];
+		circlePlus = values[UnityEngine.Random.Range(0, values.Count)];
 		circleMinus = circlePlus * -1;
 		shapeList[circlePlus] = circleMat;
 		values.Remove(circlePlus);
 
-		squarePlus = values[Random.Range(0, values.Count)];
+		squarePlus = values[UnityEngine.Random.Range(0, values.Count)];
 		squareMinus = squarePlus * -1;
 		shapeList[squarePlus] = squareMat;
 		values.Remove(squarePlus);
 
-		trianglePlus = values[Random.Range(0, values.Count)];
+		trianglePlus = values[UnityEngine.Random.Range(0, values.Count)];
 		triangleMinus = trianglePlus * -1;
 		shapeList[trianglePlus] = triangleMat;
 		values.Remove(trianglePlus);
 
-		needlePlus = values[Random.Range(0, values.Count)];
+		needlePlus = values[UnityEngine.Random.Range(0, values.Count)];
 		needleMinus = needlePlus * -1;
 		shapeList[needlePlus] = needleMat;
 		values.Remove(needlePlus);
 
-		diamondPlus = values[Random.Range(0, values.Count)];
+		diamondPlus = values[UnityEngine.Random.Range(0, values.Count)];
 		diamondMinus = diamondPlus * -1;
 		shapeList[diamondPlus] = diamondMat;
 		values.Remove(diamondPlus);
 
-		hexagonPlus = values[Random.Range(0, values.Count)];
+		hexagonPlus = values[UnityEngine.Random.Range(0, values.Count)];
 		hexagonMinus = hexagonPlus * -1;
 		shapeList[hexagonPlus] = hexagonMat;
 		values.Remove(hexagonPlus);
 
-		starPlus = values[Random.Range(0, values.Count)];
+		starPlus = values[UnityEngine.Random.Range(0, values.Count)];
 		starMinus = starPlus * -1;
 		shapeList[starPlus] = starMat;
 		values.Remove(starPlus);
 
-		heartPlus = values[Random.Range(0, values.Count)];
+		heartPlus = values[UnityEngine.Random.Range(0, values.Count)];
 		heartMinus = heartPlus * -1;
 		shapeList[heartPlus] = heartMat;
 		values.Remove(heartPlus);
@@ -164,12 +166,12 @@ public class Mazematics : MonoBehaviour {
 			
 		///STARTING COORDINATE AND VALUES///
 
-		startMazeX = Random.Range(0, row1.Count);
-		startMazeY = Random.Range(0, maze.Count);
+		startMazeX = UnityEngine.Random.Range(0, row1.Count);
+		startMazeY = UnityEngine.Random.Range(0, maze.Count);
 		currentMazeX = startMazeX;
 		currentMazeY = startMazeY;
 
-		startValue = Random.Range(17, 33);
+		startValue = UnityEngine.Random.Range(17, 33);
 		currentValue = startValue + maze[startMazeY][startMazeX];
 
 		///PICKING BANNED VALUE RULE///
@@ -197,7 +199,7 @@ public class Mazematics : MonoBehaviour {
 
 		for (int i = 1; i < 5; i++)
 		{
-			int rndm = Random.Range(1, 5);
+			int rndm = UnityEngine.Random.Range(1, 5);
 			
 			if (rndm == 1)
 			{
@@ -406,34 +408,34 @@ public class Mazematics : MonoBehaviour {
 			}
 		}
 	}
-	public string TwitchHelpMessage = "Use '!{0} press <button>' to press a button. Valid buttons are: up, down, left, right, screen. You can use u; d; l; r for the directions. (Please don't use capitals!) You can also chain the buttons. For ex. '{0} press screen up down display'";
+	public string TwitchHelpMessage = "Use '!{0} cycle' to cycle between homes. To submit a home use '!{0} <Home name>'. For ex. '!{0} Homestead'. Pay attention to the capitals in the name!";
     IEnumerator ProcessTwitchCommand(string command)
     {
 		string commfinal=command.Replace("press ", "");
 		string[] digitstring = commfinal.Split(' ');
 		int tried;
 		foreach(string option in digitstring){
-			if(option=="up"){
+			if(option.Equals("up", StringComparison.InvariantCultureIgnoreCase) || option.Equals("u", StringComparison.InvariantCultureIgnoreCase)){
 				yield return null;
 				yield return arrowUp;
 				yield return arrowUp;
 			}
-			if(option=="down"){
+			if(option.Equals("down", StringComparison.InvariantCultureIgnoreCase) || option.Equals("d", StringComparison.InvariantCultureIgnoreCase)){
 				yield return null;
 				yield return arrowDown;
 				yield return arrowDown;
 			}
-			if(option=="left"){
+			if(option.Equals("left", StringComparison.InvariantCultureIgnoreCase) || option.Equals("l", StringComparison.InvariantCultureIgnoreCase)){
 				yield return null;
 				yield return arrowLeft;
 				yield return arrowLeft;
 			}
-			if(option=="right"){
+			if(option.Equals("right", StringComparison.InvariantCultureIgnoreCase) || option.Equals("r", StringComparison.InvariantCultureIgnoreCase)){
 				yield return null;
 				yield return arrowRight;
 				yield return arrowRight;
 			}
-			if(option=="display" || option=="screen"){
+			if(option.Equals("display", StringComparison.InvariantCultureIgnoreCase) || option.Equals("screen", StringComparison.InvariantCultureIgnoreCase)){
 				yield return null;
 				yield return screen;
 				yield return screen;
