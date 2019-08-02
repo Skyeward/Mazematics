@@ -431,7 +431,7 @@ public class Mazematics : MonoBehaviour {
 			if(option=="right"){
 				yield return null;
 				yield return arrowRight;
-				ield return arrowRight;
+				yield return arrowRight;
 			}
 			if(option=="display" || option=="screen"){
 				yield return null;
