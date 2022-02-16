@@ -312,7 +312,7 @@ public class Mazematics : MonoBehaviour {
 			{
 				if (currentValue == goalValue)
 				{
-					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), maze[currentMazeY][currentMazeX]);
+					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), maze[currentMazeY][currentMazeX]);
 					Debug.LogFormat("[Mazematics #{0}] Current value changed from {1} --> {2}", _moduleId, currentValue - maze[currentMazeY][currentMazeX], currentValue);
 					Debug.LogFormat("[Mazematics #{0}] SOLVED!", _moduleId);
 					
@@ -323,7 +323,7 @@ public class Mazematics : MonoBehaviour {
 				else if (currentValue < 0 || currentValue > 49)
 				{
 					Debug.LogFormat("[Mazematics #{0}] STRIKE! Out of bounds - maze will not move", _moduleId);
-					Debug.LogFormat("[Mazematics #{0}] Attempted to move to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), maze[currentMazeY][currentMazeX]);
+					Debug.LogFormat("[Mazematics #{0}] Attempted to move to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), maze[currentMazeY][currentMazeX]);
 					Debug.LogFormat("[Mazematics #{0}] Current value would have changed from {1} --> {2}", _moduleId, currentValue - maze[currentMazeY][currentMazeX], currentValue);
 					
 					currentValue -= maze[currentMazeY][currentMazeX];
@@ -333,21 +333,21 @@ public class Mazematics : MonoBehaviour {
 					currentMazeX = (currentMazeX + 8) % 8; 
 					currentMazeY = (currentMazeY + 8) % 8;
 
-					Debug.LogFormat("[Mazematics #{0}] Current value must be within 0-49. Maze not moved, coordinate is still {1}{2}, current value is still {3}", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), currentValue);
+					Debug.LogFormat("[Mazematics #{0}] Current value must be within 0-49. Maze not moved, coordinate is still {1}{2}, current value is still {3}", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), currentValue);
 
 					GetComponent<KMBombModule>().HandleStrike();
 				}
 				else if (bannedValues.Contains(currentValue) == true)
 				{
 					Debug.LogFormat("[Mazematics #{0}] STRIKE! Restricted value - maze will still move", _moduleId);
-					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), maze[currentMazeY][currentMazeX]);
+					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), maze[currentMazeY][currentMazeX]);
 					Debug.LogFormat("[Mazematics #{0}] Current value changed from {1} --> {2}", _moduleId, currentValue - maze[currentMazeY][currentMazeX], currentValue);
 
 					GetComponent<KMBombModule>().HandleStrike();
 				}
 				else
 				{
-					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), maze[currentMazeY][currentMazeX]);
+					Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), maze[currentMazeY][currentMazeX]);
 					Debug.LogFormat("[Mazematics #{0}] Current value changed from {1} --> {2}", _moduleId, currentValue - maze[currentMazeY][currentMazeX], currentValue);
 				}
 			}
@@ -356,7 +356,7 @@ public class Mazematics : MonoBehaviour {
 				Debug.LogFormat("[Mazematics #{0}] Starting maze coordinate: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[startMazeX], (startMazeY + 1), maze[startMazeY][startMazeX]);
 				Debug.LogFormat("[Mazematics #{0}] Current value changed from {1} --> {2}", _moduleId, startValue, currentValue - maze[currentMazeY][currentMazeX]);
 
-				Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (startMazeY + 1), maze[currentMazeY][currentMazeX]);
+				Debug.LogFormat("[Mazematics #{0}] Moved to: {1}{2} (cell is equal to {3})", _moduleId, logCoordinates[currentMazeX], (currentMazeY + 1), maze[currentMazeY][currentMazeX]);
 				Debug.LogFormat("[Mazematics #{0}] Current value changed from {1} --> {2}", _moduleId, currentValue - maze[currentMazeY][currentMazeX], currentValue);
 			}
 
